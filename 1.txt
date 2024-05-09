@@ -1,0 +1,64 @@
+1. 브라우저의 동작 원리에 대해 설명
+    브라우저의 목적은 웹페이지를 표시하는 것이다. 
+    사용자의 요청사항에 대해 서버에 요청을 보내고, 받아온 응답을 통하여 브라우저에 렌더링한다.
+    사용자는 주소창에 URL을 입력하거나, 링크를 클릭하고, 폼을 제출하는 등의 동작을 통해 서버에 요청을 보낸다.
+
+
+
+
+2. CORS에 대해 설명 
+
+3. Flex와 Grid에 대해 설명
+
+4. CSR & SSR 
+
+5. 
+    a. 코드 실행 시 콘솔에 출력되는 메시지  나열
+                first start
+
+                second start
+
+                third start
+
+                fourth start
+                fourth end
+                second end
+                first end
+                promise resolved
+                third end
+                setTimeout
+
+    b. setTimeout 함수 호출 시점
+        asyncThird 함수를 수행하면서 
+        console.log('third start'); //3 를 실행한 후 
+        setTimeOut 함수를 호출. 이 때 콜백함수는 콜백 큐에 저장
+
+    c. await 키워드가 asyncFourth의 실행에 어떤 영향을 미치는지
+        비동기 함수이지만 asyncFourth가 동작을 완료한 후에야 (promise.resolve 수행 후 ) third end가 수행됨
+
+
+function first() {
+  console.log('first start');
+  second();
+  console.log('first end');
+}
+
+function second() {
+  console.log('second start');
+  asyncThird();
+  console.log('second end');
+}
+async function asyncThird() {
+  console.log('third start');
+  setTimeout(() => console.log('setTimeout'), 0);
+  await asyncFourth();
+  console.log('third end');
+}
+function asyncFourth() {
+  return new Promise(resolve => {
+    console.log('fourth start');
+    resolve();
+    console.log('fourth end');
+  }).then(() => console.log('promise resolved'));
+}
+first();

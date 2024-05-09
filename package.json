@@ -1,0 +1,11 @@
+{
+    "name": "subject",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "solve": "node main.js"
+    },
+    "author": "",
+    "license": "ISC"
+}
