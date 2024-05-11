@@ -18,13 +18,22 @@ const solution = (n, info) => {
     return Math.max(dpFunc(n, upArr), dpFunc(n, downArr));
 };
 
-const input = require('fs')
-    .readFileSync(process.platform === 'linux' ? '/dev/stdin' : './input.txt')
-    .toString()
-    .trim()
-    .split('\n');
+const main = () => {
+    const input = require('fs')
+        .readFileSync(
+            process.platform === 'linux' ? '/dev/stdin' : './2296/input.txt'
+        )
+        .toString()
+        .trim()
+        .split('\n');
 
-const n = parseInt(input.shift());
-const info = input.map((s) => s.split(' ').map((b) => +b));
+    const n = parseInt(input.shift());
+    const info = input.map((s) => s.split(' ').map((b) => +b));
 
-console.log(solution(n, info));
+    console.log('2296번');
+    console.log(solution(n, info));
+};
+
+module.exports = {
+    main,
+};
